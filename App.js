@@ -12,11 +12,11 @@ class FlatListBasics extends Component {
 
   constructor(props){
     super(props);
-    this.state = {isLoading:true, dataSource:{}}
+    this.state = {isLoading : true, dataSource : {}}
   }
 
   componentDidMount=()=>{
-    return fetch('http://172.30.1.30:8080/api/searchPerformanceList')
+    return fetch('http://localhost:8080/api/searchPerformanceList')
     .then((response)=>response.json())
     .then((responseJson)=>{
       this.setState({
@@ -35,9 +35,7 @@ class FlatListBasics extends Component {
     }
 
     if(this.state.isLoading){
-      <View style={{flex: 1, padding: 20}}>
-        <ActivityIndicator/>
-      </View>
+        return (<ActivityIndicator style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}/>)
     }
 
     return (
