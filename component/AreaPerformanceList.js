@@ -1,9 +1,8 @@
 /**
  * 지역별공연/전시목록조회 
  */
-
 import React, { Component } from 'react';
-import { Platform, SectionList, ActivityIndicator, AppRegistry, FlatList, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { TouchableOpacity, Platform, SectionList, ActivityIndicator, AppRegistry, FlatList, StyleSheet, Text, View, ScrollView } from 'react-native';
 import SearchDetailItemInfo from './SearchDetailItemInfo';
 
 import { withNavigation, createStackNavigator, createAppContainer } from 'react-navigation';
@@ -80,19 +79,21 @@ class AreaPerformanceList extends Component {
         let _data = Object.values(dataList[0])[i];
         returnValue.push(
             <ListItem thumbnail key={_data.seq}>
-              <Left>
-                <Thumbnail square source={{ uri: _data.thumbnail }} />
-              </Left>
-              <Body>
-                <Text>{_data.title}</Text>
-                <Text note numberOfLines={1}>{_data.place}</Text>
-              </Body>
-              <Right>
-                <Button transparent 
-                  onPress={()=>{this._onPressFunc({_data})}}>
-                  <Icon name="arrow-right"/>
-                </Button>
-              </Right>
+                <Left>
+                    <Thumbnail square source={{ uri: _data.thumbnail }} />
+                </Left>
+                <Body>
+                    <TouchableOpacity onPress={()=>{this._onPressFunc({_data})}}>
+                        <Text>{_data.title}</Text>
+                        <Text note numberOfLines={1}>{_data.place}</Text>
+                    </TouchableOpacity>
+                </Body>
+                <Right>
+                    <Button transparent 
+                    onPress={()=>{this._onPressFunc({_data})}}>
+                    <Icon name="arrow-right" size={20}/>
+                    </Button>
+                </Right>
             </ListItem>
          );
       }
@@ -166,4 +167,5 @@ class AreaPerformanceList extends Component {
     }
   }
 
+  
   AppRegistry.registerComponent('simplePerformanceProject', () => withNavigation(AreaMain));
