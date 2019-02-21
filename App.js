@@ -16,12 +16,12 @@ export default class App extends Component {
 
   render() {
     return(
-      <Drawer
-        ref={(ref) => this._drawer = ref}
-        content={<ControlPanel />}
-        >
-        <MainView />
-      </Drawer>
+      // <Drawer
+      //   ref={(ref) => this._drawer = ref}
+      //   content={<ControlPanel />}
+      //   >
+      //   <MainView />
+      // </Drawer>
       <Container>
         <Header searchBar rounded>
           <Item>
