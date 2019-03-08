@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, WebView ,ActivityIndicator, View, ScrollView, Dimensions, Text} from 'react-native';
+import { PixelRatio, StyleSheet, Image, WebView ,ActivityIndicator, View, ScrollView, Dimensions, Text} from 'react-native';
 import HTML from 'react-native-render-html';
 import ExpanableList from 'react-native-expandable-section-list';
 
 var DomParser = require('react-native-html-parser').DOMParser;
+
+const dimensions = Dimensions.get('window');
+// const imageHeight = Math.round(dimensions.width * 9 / 16 );
+const imageHeight = dimensions.width;
+const imageWidth = dimensions.width;
+
 
 /**
  * 기간/지역별 등 리스트에서 클릭 시 들어온 데이터 상세
@@ -25,7 +31,7 @@ export default class searchDetailItemInfo extends Component {
         data.append('seq',this.state.item.seq);
 
         // 공연/전시 상세 정보 호출
-        return fetch('http://172.30.1.30:8080/api/searchPerformanceInfo',{
+        return fetch('http://192.168.43.23:8080/api/searchPerformanceInfo',{
             method: 'POST',
             body:data
         })
@@ -34,11 +40,11 @@ export default class searchDetailItemInfo extends Component {
             console.log("contents 1: ------" + responseJson);
             let htmlImage = new DomParser().parseFromString(responseJson.body.msgData.perforInfo.contents1,'text/html');
             let attributes = htmlImage.querySelect('img')[0].attributes;
-
+           
             // HTML 이미지 소스 추출
             for(var i=0 ; i < attributes.length; i++){
                 if(attributes[i].nodeName == 'src') {
-                    responseJson.body.msgData.perforInfo.contents1 = attributes[i].nodeValue;
+                    responseJson.body.msgData.perforInfo.contents1 = attributes[i].nodeValue
                 }
             }
 
@@ -104,14 +110,9 @@ export default class searchDetailItemInfo extends Component {
             </View>
             <View style={{alignItems: 'center'}}>
               <Image 
-                resizeMode='contain'
-                style={{
-                    // resizeMode:'contain',
-                    height: height,
-                    width: width
-                }}
-                source={{uri: perforInfo.contents1}}
-               
+                style={{resizeMode: 'cover', flex: 1, width:imageWidth, height:1500}}
+                source={{uri: perforInfo.contents1, isStatic: true}}
+                resizeMode='cover'
                 />
             </View>
           </ScrollView>

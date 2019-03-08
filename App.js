@@ -16,18 +16,18 @@ export default class App extends Component {
 
   render() {
     return(
-      <Drawer
-        ref={(ref) => this._drawer = ref}
-        content={<ControlPanel />}
-        >
-        <MainView />
-      </Drawer>
+      // <Drawer
+      //   ref={(ref) => this._drawer = ref}
+      //   content={<ControlPanel />}
+      //   >
+      //   <MainView />
+      // </Drawer>
       <Container>
         <Header searchBar rounded>
           <Item>
-            <Icon name="ios-search" />
             <Input placeholder="Search" />
-            <Icon name="ios-people" />
+            <Icon name="ios-search"/>
+            {/* <Icon name="ios-people" /> */}
           </Item>
           <Button transparent>
             <Text>Search</Text>
