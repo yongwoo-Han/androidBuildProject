@@ -24,7 +24,7 @@ class AreaPerformanceList extends Component {
     }
   
     componentDidMount=()=>{
-      return fetch('http://172.30.1.30:8080/api/searchPerformanceList')
+      return fetch('http://192.168.43.23:8080/api/searchPerformanceList') 
       .then((response)=>response.json())
       .then((responseJson)=>{
         this.setState({
