@@ -168,4 +168,4 @@ class AreaPerformanceList extends Component {
   }
 
   
-  AppRegistry.registerComponent('simplePerformanceProject', () => withNavigation(AreaMain));
+  // AppRegistry.registerComponent('simplePerformanceProject', () => withNavigation(AreaMain));

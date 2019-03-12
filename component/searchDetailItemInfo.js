@@ -6,7 +6,6 @@ import ExpanableList from 'react-native-expandable-section-list';
 var DomParser = require('react-native-html-parser').DOMParser;
 
 const dimensions = Dimensions.get('window');
-// const imageHeight = Math.round(dimensions.width * 9 / 16 );
 const imageHeight = dimensions.width;
 const imageWidth = dimensions.width;
 
